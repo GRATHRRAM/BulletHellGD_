@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bljk8joxf8l0m"]
+
+[ext_resource type="Texture2D" uid="uid://cjeh7oc6rcwcd" path="res://Base.png" id="1_pj3nm"]
+
+[sub_resource type="Gradient" id="Gradient_pj3nm"]
+offsets = PackedFloat32Array(0, 0.55, 1)
+colors = PackedColorArray(0.858824, 0, 0.0196078, 1, 1, 1, 0, 1, 0.990222, 1, 0.60292, 1)
+
+[sub_resource type="Curve" id="Curve_pj3nm"]
+_limits = [0.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 12.2449), 0.0, 0.0, 0, 0, Vector2(0.93985, 200), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="BulletHitCpu" type="CPUParticles2D"]
+emitting = false
+amount = 20
+texture = ExtResource("1_pj3nm")
+lifetime = 4.0
+one_shot = true
+explosiveness = 0.9
+randomness = 0.2
+spread = 180.0
+initial_velocity_max = 500.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_min = 0.3
+scale_amount_max = 0.7
+color_ramp = SubResource("Gradient_pj3nm")
+anim_speed_max = 8.0
+anim_speed_curve = SubResource("Curve_pj3nm")

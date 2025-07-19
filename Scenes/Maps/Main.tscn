@@ -1,0 +1,135 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcm1k121befby"]
+
+[ext_resource type="PackedScene" uid="uid://bpi0vie6r6xaw" path="res://Scenes/Maps/lobby.tscn" id="1_4txy7"]
+[ext_resource type="Script" uid="uid://djarqg0b3bvlh" path="res://Scripts/Main.cs" id="1_ohl52"]
+[ext_resource type="PackedScene" uid="uid://dr1eiorp1xgbn" path="res://Scenes/Player/PlayerHolder.tscn" id="2_2h353"]
+[ext_resource type="Theme" uid="uid://glyyhui0vty2" path="res://Theme.tres" id="4_gbs56"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2h353"]
+font_size = 15
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gbs56"]
+
+[sub_resource type="Sky" id="Sky_lb8c6"]
+sky_material = SubResource("ProceduralSkyMaterial_gbs56")
+
+[sub_resource type="Environment" id="Environment_b2k12"]
+background_mode = 3
+sky = SubResource("Sky_lb8c6")
+glow_enabled = true
+glow_blend_mode = 1
+fog_light_energy = 2.01
+fog_sun_scatter = 3.75
+fog_density = 0.8942
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ohl52")
+
+[node name="Map" type="Node" parent="."]
+
+[node name="Lobby" parent="Map" instance=ExtResource("1_4txy7")]
+
+[node name="PlayerHolder" parent="." instance=ExtResource("2_2h353")]
+position = Vector2(576, 552)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartGui" type="Control" parent="CanvasLayer"]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 363.0
+offset_bottom = 254.0
+theme = ExtResource("4_gbs56")
+
+[node name="info" type="Label" parent="CanvasLayer/StartGui"]
+layout_mode = 2
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 180.0
+offset_bottom = 80.0
+text = "Leave Ip Empty While 
+Hosting"
+label_settings = SubResource("LabelSettings_2h353")
+
+[node name="Ip" type="TextEdit" parent="CanvasLayer/StartGui"]
+layout_mode = 2
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 184.0
+offset_bottom = 104.0
+placeholder_text = "IP Address"
+
+[node name="Port" type="TextEdit" parent="CanvasLayer/StartGui"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 112.0
+offset_right = 184.0
+offset_bottom = 152.0
+placeholder_text = "Port"
+
+[node name="Join" type="Button" parent="CanvasLayer/StartGui"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 160.0
+offset_right = 184.0
+offset_bottom = 200.0
+text = "Join"
+
+[node name="Host" type="Button" parent="CanvasLayer/StartGui"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 208.0
+offset_right = 184.0
+offset_bottom = 248.0
+text = "Host"
+
+[node name="ServerGui" type="Control" parent="CanvasLayer"]
+visible = false
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Switch_Lobby" type="Button" parent="CanvasLayer/ServerGui"]
+layout_mode = 0
+offset_left = 896.0
+offset_right = 1152.0
+offset_bottom = 62.0
+theme = ExtResource("4_gbs56")
+text = "Switch Map To Lobby"
+
+[node name="Label" type="Label" parent="CanvasLayer/ServerGui"]
+layout_mode = 0
+offset_left = 936.0
+offset_top = 152.0
+offset_right = 1122.0
+offset_bottom = 256.0
+theme = ExtResource("4_gbs56")
+text = "Press ` To Toggle Gui"
+
+[node name="Switch_Random" type="Button" parent="CanvasLayer/ServerGui"]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 72.0
+offset_right = 1152.0
+offset_bottom = 136.0
+theme = ExtResource("4_gbs56")
+text = "Switch Map To Random Map"
+
+[node name="BulletHolder" type="Node2D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="BulletHolder"]
+_spawnable_scenes = PackedStringArray("uid://bhqaxhj0fubgo")
+spawn_path = NodePath("..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b2k12")
+
+[connection signal="pressed" from="CanvasLayer/StartGui/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="CanvasLayer/StartGui/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/ServerGui/Switch_Lobby" to="." method="_on_switch_lobby_pressed"]
+[connection signal="pressed" from="CanvasLayer/ServerGui/Switch_Random" to="." method="_on_switch_random_pressed"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://unisoetlrilg"]
+
+[ext_resource type="Theme" uid="uid://glyyhui0vty2" path="res://Theme.tres" id="1_76o3w"]
+
+[node name="ServerGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_76o3w")
+
+[node name="Switch_Lobby" type="Button" parent="."]
+layout_mode = 0
+offset_left = 896.0
+offset_right = 1152.0
+offset_bottom = 62.0
+theme = ExtResource("1_76o3w")
+text = "Switch Map To Lobby"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 936.0
+offset_top = 152.0
+offset_right = 1122.0
+offset_bottom = 256.0
+theme = ExtResource("1_76o3w")
+text = "Press ` To Toggle Gui"
+
+[node name="Switch_Random" type="Button" parent="."]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 72.0
+offset_right = 1152.0
+offset_bottom = 136.0
+theme = ExtResource("1_76o3w")
+text = "Switch Map To Random Map"

@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://glyyhui0vty2"]
+
+[ext_resource type="FontFile" uid="uid://hqe1qmardd1d" path="res://Fonts/Obised.ttf" id="1_yd3fu"]
+
+[resource]
+Button/font_sizes/font_size = 22
+Button/fonts/font = ExtResource("1_yd3fu")
+Label/font_sizes/font_size = 22
+Label/fonts/font = ExtResource("1_yd3fu")
+TextEdit/font_sizes/font_size = 18
+TextEdit/fonts/font = ExtResource("1_yd3fu")

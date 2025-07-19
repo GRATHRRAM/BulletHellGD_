@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr1eiorp1xgbn"]
+
+[ext_resource type="Script" uid="uid://bdhb1rmt6aq5r" path="res://Scripts/Player/PlayerHolder.cs" id="1_2pl8i"]
+[ext_resource type="PackedScene" uid="uid://cn1ahqcv5phvn" path="res://Scenes/Player/Player.tscn" id="2_gyble"]
+
+[node name="PlayerHolder" type="Node2D" node_paths=PackedStringArray("Camera")]
+script = ExtResource("1_2pl8i")
+PlayerScene = ExtResource("2_gyble")
+Camera = NodePath("CamHolder")
+
+[node name="CamHolder" type="Node2D" parent="."]
+metadata/NotPlayer = true
+
+[node name="Camera2D" type="Camera2D" parent="CamHolder"]
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://cn1ahqcv5phvn")
+spawn_path = NodePath("..")
+metadata/NotPlayer = true

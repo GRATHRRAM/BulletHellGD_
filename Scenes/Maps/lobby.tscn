@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpi0vie6r6xaw"]
+
+[ext_resource type="PackedScene" uid="uid://dqey8qcrkc7xa" path="res://Scenes/Platforms/NormalPlatform.tscn" id="1_lb8c6"]
+[ext_resource type="FontFile" uid="uid://hqe1qmardd1d" path="res://Fonts/Obised.ttf" id="1_nxgca"]
+
+[sub_resource type="TextMesh" id="TextMesh_nxgca"]
+text = "Wellcome in Bullet Hell Lobby
+"
+font = ExtResource("1_nxgca")
+font_size = 21
+
+[node name="Lobby" type="Node2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(576, 374)
+scale = Vector2(298.331, -477.241)
+mesh = SubResource("TextMesh_nxgca")
+
+[node name="MapLayout" type="Node2D" parent="."]
+
+[node name="NormalPlatform" parent="MapLayout" instance=ExtResource("1_lb8c6")]
+position = Vector2(574, 792)
+scale = Vector2(17.8286, 4.14275)
+
+[node name="NormalPlatform2" parent="MapLayout" instance=ExtResource("1_lb8c6")]
+position = Vector2(-264, 568)
+rotation = 0.367022
+scale = Vector2(5.82858, 1.86275)
+
+[node name="NormalPlatform3" parent="MapLayout" instance=ExtResource("1_lb8c6")]
+position = Vector2(1382, 730)
+rotation = 1.40232
+scale = Vector2(5.82858, 1.86275)
+
+[node name="NormalPlatform5" parent="MapLayout" instance=ExtResource("1_lb8c6")]
+position = Vector2(-683, 578)
+rotation = 0.0817501
+scale = Vector2(4.52613, 8.29284)
+
+[node name="NormalPlatform6" parent="MapLayout" instance=ExtResource("1_lb8c6")]
+position = Vector2(1726, 386)
+rotation = -0.524518
+scale = Vector2(6.62858, 1.22275)
+
+[node name="NormalPlatform7" parent="MapLayout" instance=ExtResource("1_lb8c6")]
+position = Vector2(1365, -105)
+rotation = 0.536647
+scale = Vector2(6.62858, 1.22275)
+
+[node name="NormalPlatform8" parent="MapLayout" instance=ExtResource("1_lb8c6")]
+position = Vector2(-226, 136)
+rotation = -0.387125
+scale = Vector2(6.62858, 1.22275)
+
+[node name="NormalPlatform4" parent="MapLayout" instance=ExtResource("1_lb8c6")]
+position = Vector2(632, -22)
+scale = Vector2(17.8286, 1.22275)
+
+[node name="NormalPlatform9" parent="MapLayout" instance=ExtResource("1_lb8c6")]
+position = Vector2(1596, 162)
+rotation = 0.0342627
+scale = Vector2(3.34709, 1.22275)

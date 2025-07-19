@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhqaxhj0fubgo"]
+
+[ext_resource type="Script" uid="uid://b1lpiy4n6pcnp" path="res://Scripts/Bullets/Bullet.cs" id="1_a2uxe"]
+[ext_resource type="Texture2D" uid="uid://bgt5tug0cb6on" path="res://icon.svg" id="2_qfstv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qngn8"]
+size = Vector2(24, 24)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qngn8"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_a2uxe")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_qngn8")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_qfstv")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_qngn8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
